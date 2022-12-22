@@ -13,7 +13,7 @@
     const pushButton = document.getElementById('push-button');
     pushButton.addEventListener('click', () => {
       const xhr = new XMLHttpRequest();
-			xhr.open('POST', '${corsProxyUrl}https://api.github.com/repos/nullscm/nullscm.github.io/git/commits');
+			xhr.open('POST', `${corsProxyUrl}https://api.github.com/repos/nullscm/nullscm.github.io/git/commits`);
       xhr.setRequestHeader('Authorization', `Bearer ${accessToken}`);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.onload = () => {

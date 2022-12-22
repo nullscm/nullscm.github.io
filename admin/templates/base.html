@@ -7,9 +7,9 @@
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" media="all">        
         <script type="text/javascript" src="assets/scripts/main.js"></script>       
         <link rel="icon" href="assets/images/favicon.ico" sizes="16x16">
-        <title>Js-CMS - Welcome to JS-CMS</title>
+        <title>${ this.strings.siteName } - ${ this.pageTitle }</title>
     </head>
-<body class="frontPage">
+<body class="${ this.pageClass }">
   <nav class="navbar navbar-expand-md fixed-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -17,9 +17,7 @@
     <div class="inner">
       <a class="navbar-brand" href=""><img width="120px" src="assets/images/logo.png" /></a>
       <div class="collapse navbar-collapse" id="mainMenu">        
-        <ul class='navbar-nav'>
-                                <li><a href="">Home</a></li><li><a href="about-us">About Us</a></li><li><a href="posts">Posts</a></li>
-                                </ul>
+        ${ this.menu_main }
       </div>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -30,28 +28,36 @@
 
     <main id='main' role="main" class="container">
       <div class="starter-template">
-        <h1>Welcome to JS-CMS</h1>          
-          This is front page
-
+        <h1>${ this.pageTitle }</h1>          
+          ${ this.content }
       </div>
     </main>
-    <script>
-      // fix for github pages:
-      let matchGitHubPages = window.location.href.match(/(.*)github.io\/([^/]*)/);
-      if ( matchGitHubPages ) {
-        document.querySelectorAll('[href]').forEach(s=>{
-          if( s.href ) { 
-            s.href = s.href.replace( ( location.origin + location.pathname), matchGitHubPages[0]+'/');
-            console.log(s.href); 
-          }
-        });
+   
+    <script type="text/javascript">
 
-        document.querySelectorAll('[src]').forEach( s => {
-          if( s.src ) { 
-            s.src = s.src.replace( ( location.origin + location.pathname), matchGitHubPages[0] + '/' );
+      /// fix for github pages:
+      let devPatterns = [/(.*)github.io\\/([^/]*)/ ];
+      devPatterns.forEach(function(devPattern){
+          let matchGitHubPages = window.location.href.match(devPattern);
+          if ( matchGitHubPages ) {
+              document.querySelectorAll('[href]').forEach(s=>{
+                  if( s.href ) { 
+                      s.href = s.href.replace( location.origin , matchGitHubPages[0] );
+                  }
+              });
+      
+              document.querySelectorAll('[src]').forEach( s => {
+                  if( s.src ) { 
+                      s.src = s.src.replace( location.origin , matchGitHubPages[0] );
+                  }
+              });
           }
-        });
+      });
+
+      document.getElementById('mobileMenuToggle').onclick = btn => {
+          document.getElementById('mainMenu').classList.toggle("open");
       }
-    </script>
+    
+  </script>
 </body>
 </html>

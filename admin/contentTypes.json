@@ -1,0 +1,24 @@
+[
+    {  
+        "name":"post",
+        "label":"post",
+        "labelPlural":"posts",
+        "labelDefinedPlural":"posts",
+        "urlPrefix":"post/",
+        "fields":[
+            {"name":"image","label":"Image","type":"image", "i18n":false},
+            {"name":"body","label":"body","type":"wysiwyg", "placeholder":"Post Body"}
+        ]
+    },
+    {  
+        "name":"page",
+        "label":"page",
+        "urlPrefix":"",
+        "labelPlural":"pages",
+        "labelDefinedPlural":"pages",
+        "fields":[
+            {"name":"image","label":"Image","type":"image", "i18n":false},
+            {"name":"body","label":"body","type":"wysiwyg", "placeholder":"Page Body"}           
+        ]
+    }
+]

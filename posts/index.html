@@ -7,9 +7,9 @@
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" media="all">        
         <script type="text/javascript" src="assets/scripts/main.js"></script>       
         <link rel="icon" href="assets/images/favicon.ico" sizes="16x16">
-        <title>Js-CMS - Welcome to JS-CMS</title>
+        <title>Js-CMS - All Posts</title>
     </head>
-<body class="frontPage">
+<body class="posts">
   <nav class="navbar navbar-expand-md fixed-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -30,9 +30,34 @@
 
     <main id='main' role="main" class="container">
       <div class="starter-template">
-        <h1>Welcome to JS-CMS</h1>          
-          This is front page
-
+        <h1>All Posts</h1>          
+          <script>
+    fetch('search/post.json')
+        .then(res=>res.json())
+        .then(jsonItems=>{
+            jsonItems.reverse().forEach( jsonItem => {
+                let itemDiv = document.createElement('div');
+                itemDiv.className = "result-card";
+                let itemImage = document.createElement('img');
+                itemImage.src = jsonItem.image?jsonItem.image:'assets/images/post_default.jpeg'
+                itemDiv.append(itemImage);
+                let itemContent = document.createElement('div');
+                let itemTitle = document.createElement('h3');
+                itemTitle.innerText = jsonItem.title;
+                itemContent.append(itemTitle);
+                let itemTeaser = document.createElement('span');
+                itemTeaser.innerText = jsonItem.body.substring(0, 250);
+                itemContent.append(itemTeaser);
+                let link = document.createElement('a');
+                link.href = jsonItem.href;
+                link.className = 'readMore';
+                link.innerText = 'Read More';
+                itemContent.append(link);
+                itemDiv.append(itemContent);
+                document.getElementById('main').appendChild(itemDiv);
+            });                
+        });        
+</script> 
       </div>
     </main>
     <script>

@@ -1,7 +1,0 @@
-{ 
-    "en":[
-        { "url":"", "label":"Home"},
-        { "url":"about-us", "label":"About Us"},
-        { "url":"posts", "label":"Posts"}
-    ]
-}

@@ -1,4 +1,0 @@
-[
-    { "name":"og:title", "label":"SEO - Title", "placeholder":"Item's title as viewed by search engines" , "type":"textfield"},
-    { "name":"description", "label":"SEO - Description", "placeholder":"Item's Description as viewed by search engines" , "type":"textfield"}
-]
